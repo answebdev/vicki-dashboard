@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../src/img/viatouch_logo.png';
 import Spinner from './components/misc/Spinner';
-import { Row, Col, Card, Table } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Table } from 'react-bootstrap';
 import classes from './styles/Dashboard.module.css';
 
 import {
@@ -62,15 +62,90 @@ const Dashboard = (props) => {
                   <Card>
                     <Card.Body>
                       <Card.Title>Generate Report</Card.Title>
-                      <Card.Subtitle className='mb-2 text-muted'>
+                      <br />
+                      {/* <Card.Subtitle className='mb-2 text-muted'>
                         Card Subtitle
-                      </Card.Subtitle>
-                      <Card.Text>
+                      </Card.Subtitle> */}
+                      <div className={classes.InputContainer}>
+                        <div>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Report Type</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                              placeholder='Transactions'
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Time Range</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Name Of Cardholder</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                            />
+                          </Form.Group>
+                          <Button
+                            className={classes.CreateBtn}
+                            variant='warning'
+                          >
+                            CREATE REPORT
+                          </Button>
+                        </div>
+
+                        <div>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Criteria</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Selected Type</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='exampleForm.ControlInput1'
+                          >
+                            <Form.Label>Last Four Digits Of Card</Form.Label>
+                            <Form.Control
+                              className={classes.FormControlLeft}
+                              type='text'
+                            />
+                          </Form.Group>
+                        </div>
+                      </div>
+                      {/* <Card.Text>
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
                       </Card.Text>
                       <Card.Link href='#'>Card Link</Card.Link>
-                      <Card.Link href='#'>Another Link</Card.Link>
+                      <Card.Link href='#'>Another Link</Card.Link> */}
                     </Card.Body>
                   </Card>
                 </div>
@@ -85,7 +160,6 @@ const Dashboard = (props) => {
                       <Table striped bordered hover>
                         <thead>
                           <tr>
-                            {/* <th>#</th> */}
                             <th>Transactions</th>
                             <th>Items Sold</th>
                             <th>Gross Revenue</th>
@@ -98,7 +172,6 @@ const Dashboard = (props) => {
                         </thead>
                         <tbody>
                           <tr>
-                            {/* <td>1</td> */}
                             <td>{item.report[0].transaction_count}</td>
                             <td>{item.report[0].items_sold}</td>
                             <td>{item.report[0].gross_revenues}</td>
@@ -112,12 +185,6 @@ const Dashboard = (props) => {
                             <td>{item.report[0].gross_margin}</td>
                             <td>{item.report[0].gross_margin_percent}</td>
                           </tr>
-                          {/* <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr> */}
                         </tbody>
                       </Table>
                     </Card.Body>
@@ -128,19 +195,7 @@ const Dashboard = (props) => {
           </Row>
         );
       })}
-
       {!props.isLoading ? <div className='text-center'></div> : <Spinner />}
-      {/* {props.items.map((item) => {
-        return (
-          <div key={item.correlation_id}>
-            <p>Top Level Group Name: {item.report[0].top_level_group_name}</p>
-            <p>Gross Revenues: ${item.report[0].gross_revenues}</p>
-            <p>Total Pages: {item.page.total_pages}</p>
-          </div>
-        );
-      })}
-
-      {!props.isLoading ? <div className='text-center'></div> : <Spinner />} */}
     </div>
   );
 };
