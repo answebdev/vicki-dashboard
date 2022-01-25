@@ -16,6 +16,120 @@ import 'react-pro-sidebar/dist/css/styles.css';
 const Dashboard = (props) => {
   return (
     <div className={classes.Container}>
+      {props.items.map((item) => {
+        return (
+          <Row>
+            <Col md={3}>
+              <ProSidebar>
+                <SidebarHeader className={classes.SidebarHeader}>
+                  <img className={classes.LogoImage} src={logo} alt='' />
+                </SidebarHeader>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-server'></i> Machines
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-map-marker-alt'></i> Locations
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-cube'></i> Products
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-file-alt'></i> Reports
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fab fa-youtube'></i> Media
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-cog'></i> User Management
+                </SidebarContent>
+                <SidebarContent className={classes.SidebarContent}>
+                  <i class='fas fa-sign-out-alt'></i> Logout
+                </SidebarContent>
+                <SidebarContent>&nbsp;</SidebarContent>
+                <SidebarContent>&nbsp;</SidebarContent>
+                <SidebarContent>&nbsp;</SidebarContent>
+                <SidebarContent>&nbsp;</SidebarContent>
+                <SidebarFooter className={classes.SidebarFooter}>
+                  Version 1.6.32
+                </SidebarFooter>
+                <SidebarContent>&nbsp;</SidebarContent>
+              </ProSidebar>
+            </Col>
+
+            <Col md={9}>
+              <div style={{ padding: '2em' }}>
+                <div className={classes.CardDiv}>
+                  <Card>
+                    <Card.Body>
+                      <Card.Title>Generate Report</Card.Title>
+                      <Card.Subtitle className='mb-2 text-muted'>
+                        Card Subtitle
+                      </Card.Subtitle>
+                      <Card.Text>
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </Card.Text>
+                      <Card.Link href='#'>Card Link</Card.Link>
+                      <Card.Link href='#'>Another Link</Card.Link>
+                    </Card.Body>
+                  </Card>
+                </div>
+
+                <div className={classes.TableDiv}>
+                  <Card>
+                    <Card.Body>
+                      <Card.Title>Report: Transactions</Card.Title>
+                      <Card.Subtitle className='mb-2 text-muted'>
+                        Date: 1/20/2020
+                      </Card.Subtitle>
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            {/* <th>#</th> */}
+                            <th>Transactions</th>
+                            <th>Items Sold</th>
+                            <th>Gross Revenue</th>
+                            <th>Taxes</th>
+                            <th>Revenue</th>
+                            <th>Cost</th>
+                            <th>Gross Margin</th>
+                            <th>Gross Margin %</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            {/* <td>1</td> */}
+                            <td>{item.report[0].transaction_count}</td>
+                            <td>{item.report[0].items_sold}</td>
+                            <td>{item.report[0].gross_revenues}</td>
+                            <td>{item.report[0].taxes}</td>
+                            <td>{item.report[0].revenues}</td>
+                            <td>
+                              {(
+                                Math.round(item.report[0].cost * 100) / 100
+                              ).toFixed(2)}
+                            </td>
+                            <td>{item.report[0].gross_margin}</td>
+                            <td>{item.report[0].gross_margin_percent}</td>
+                          </tr>
+                          {/* <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr> */}
+                        </tbody>
+                      </Table>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        );
+      })}
+
+      {!props.isLoading ? <div className='text-center'></div> : <Spinner />}
       {/* {props.items.map((item) => {
         return (
           <div key={item.correlation_id}>
@@ -27,109 +141,6 @@ const Dashboard = (props) => {
       })}
 
       {!props.isLoading ? <div className='text-center'></div> : <Spinner />} */}
-      <Row>
-        <Col md={3}>
-          <ProSidebar>
-            <SidebarHeader className={classes.SidebarHeader}>
-              <img className={classes.LogoImage} src={logo} alt='' />
-            </SidebarHeader>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-server'></i> Machines
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-map-marker-alt'></i> Locations
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-cube'></i> Products
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-file-alt'></i> Reports
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fab fa-youtube'></i> Media
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-cog'></i> User Management
-            </SidebarContent>
-            <SidebarContent className={classes.SidebarContent}>
-              <i class='fas fa-sign-out-alt'></i> Logout
-            </SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarFooter className={classes.SidebarFooter}>
-              Version 1.6.32
-            </SidebarFooter>
-            <SidebarContent>&nbsp;</SidebarContent>
-          </ProSidebar>
-        </Col>
-
-        <Col md={9}>
-          <div style={{ padding: '2em' }}>
-            <div className={classes.CardDiv}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Generate Report</Card.Title>
-                  <Card.Subtitle className='mb-2 text-muted'>
-                    Card Subtitle
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text>
-                  <Card.Link href='#'>Card Link</Card.Link>
-                  <Card.Link href='#'>Another Link</Card.Link>
-                </Card.Body>
-              </Card>
-            </div>
-
-            <div className={classes.TableDiv}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Report: Transactions</Card.Title>
-                  <Card.Subtitle className='mb-2 text-muted'>
-                    Date: 1/20/2020
-                  </Card.Subtitle>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Machine Name</th>
-                        <th>Customer Name</th>
-                        <th>Card Type</th>
-                        <th>Card Number</th>
-                        <th>Line Item ID</th>
-                        <th>Transaction Date</th>
-                        <th>Invoice ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td colSpan={2}>Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </Card.Body>
-              </Card>
-            </div>
-          </div>
-        </Col>
-      </Row>
     </div>
   );
 };
