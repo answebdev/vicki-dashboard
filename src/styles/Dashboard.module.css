@@ -1,3 +1,10 @@
+.Container {
+  background-color: #f4f4f4;
+}
+.SidebarContent {
+  cursor: pointer;
+}
+
 .SidebarContent,
 .SidebarFooter {
   padding: 15px;
@@ -15,4 +22,9 @@
 .LogoImage {
   width: 70%;
   height: auto;
+}
+
+.CardDiv,
+.TableDiv {
+  margin: 40px 0;
 }
