@@ -16,34 +16,34 @@ import 'react-pro-sidebar/dist/css/styles.css';
 const Dashboard = (props) => {
   return (
     <div className={classes.Container}>
-      {props.items.map((item) => {
+      {props.items.map((item, index) => {
         return (
-          <Row>
+          <Row key={index}>
             <Col md={3}>
               <ProSidebar>
                 <SidebarHeader className={classes.SidebarHeader}>
                   <img className={classes.LogoImage} src={logo} alt='' />
                 </SidebarHeader>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-server'></i> Machines
+                  <i className='fas fa-server'></i> Machines
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-map-marker-alt'></i> Locations
+                  <i className='fas fa-map-marker-alt'></i> Locations
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-cube'></i> Products
+                  <i className='fas fa-cube'></i> Products
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-file-alt'></i> Reports
+                  <i className='fas fa-file-alt'></i> Reports
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fab fa-youtube'></i> Media
+                  <i className='fab fa-youtube'></i> Media
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-cog'></i> User Management
+                  <i className='fas fa-cog'></i> User Management
                 </SidebarContent>
                 <SidebarContent className={classes.SidebarContent}>
-                  <i class='fas fa-sign-out-alt'></i> Logout
+                  <i className='fas fa-sign-out-alt'></i> Logout
                 </SidebarContent>
                 <SidebarContent>&nbsp;</SidebarContent>
                 <SidebarContent>&nbsp;</SidebarContent>
