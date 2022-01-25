@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Results from './Results';
+import Dashboard from './Dashboard';
 
 import './App.css';
 
@@ -97,7 +97,7 @@ function App() {
 
         {/* <button onClick={() => postData()}>POST DATA</button> */}
 
-        <Results items={items} isLoading={isLoading} />
+        <Dashboard items={items} isLoading={isLoading} />
       </header>
     </div>
   );

@@ -1,0 +1,18 @@
+.SidebarContent,
+.SidebarFooter {
+  padding: 15px;
+}
+
+.SidebarContent:hover {
+  background-color: #f4f4f4;
+  color: #1d1d1d;
+}
+
+.SidebarHeader {
+  padding: 20px;
+}
+
+.LogoImage {
+  width: 70%;
+  height: auto;
+}
