@@ -2,13 +2,6 @@ import React from 'react';
 import Spinner from './Spinner';
 import { Row, Col, Card, Form, Button, Table } from 'react-bootstrap';
 import classes from '../styles/Dashboard.module.css';
-import {
-  ProSidebar,
-  SidebarHeader,
-  SidebarFooter,
-  SidebarContent,
-} from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
 
 const Report = (props) => {
   return (
