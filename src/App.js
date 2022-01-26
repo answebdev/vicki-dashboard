@@ -1,84 +1,57 @@
 import React, { useEffect, useState } from 'react';
-import CreateReport from './CreateReport';
-import Report from './Report';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CreateReport from './components/CreateReport';
+import Machines from './components/Machines';
+import Locations from './components/Locations';
+import Products from './components/Products';
+import Media from './components/Media';
+import UserManagement from './components/UserManagement';
+import Logout from './components/Logout';
 
 import './App.css';
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [items, setItems] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  var myHeaders = new Headers();
-  myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
-  myHeaders.append('Content-Type', 'application/json');
+  // var myHeaders = new Headers();
+  // myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
+  // myHeaders.append('Content-Type', 'application/json');
 
-  var raw = JSON.stringify({
-    from_date: '2021-12-01',
-    to_date: '2021-12-31',
-    top_level_grouping: 'client_id',
-    sort: 'items_sold,d',
-  });
+  // var raw = JSON.stringify({
+  //   from_date: '2021-12-01',
+  //   to_date: '2021-12-31',
+  //   top_level_grouping: 'client_id',
+  //   sort: 'items_sold,d',
+  // });
 
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow',
-  };
+  // var requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: raw,
+  //   redirect: 'follow',
+  // };
 
-  // const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
-  // function fetchResults() {
+  // const fetchResults = async () => {
   //   setIsLoading(true);
+  //   const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
+  //   const response = await fetch(url, requestOptions);
+  //   const data = await response.json();
 
   //   fetch(url, requestOptions)
-  //     .then((res) => res.json())
-  //     .then((data) => {
+  //     .then((response) => {
   //       setIsLoading(false);
   //       setItems([data]);
-  //       console.log(data);
+  //       return response.json();
   //     })
   //     .catch((error) => {
-  //       console.error('Error:', error);
+  //       setIsLoading(false);
+  //       console.log(error);
+  //     })
+  //     .finally(() => {
   //       setIsLoading(false);
   //     });
-  // }
-
-  const fetchResults = async () => {
-    setIsLoading(true);
-    // async function fetchResults() {
-    const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
-    const response = await fetch(url, requestOptions);
-    const data = await response.json();
-
-    fetch(url, requestOptions)
-      .then((response) => {
-        setIsLoading(false);
-        setItems([data]);
-        return response.json();
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-
-    console.log(data);
-    console.log('TOP LEVEL GROUP NAME: ' + data.report[0].top_level_group_name);
-    console.log('COST: ' + data.report[0].cost);
-    console.log('TOTAL PAGES: ' + data.page.total_pages);
-
-    // if (data) {
-    //   setItems(data);
-    //   console.log(data);
-    //   console.log(
-    //     'TOP LEVEL GROUP NAME: ' + data.report[0].top_level_group_name
-    //   );
-    //   console.log('COST: ' + data.report[0].cost);
-    //   console.log('TOTAL PAGES: ' + data.page.total_pages);
-    // }
-  };
+  // };
 
   // useEffect(() => {
   //   setIsLoading(true);
@@ -105,20 +78,21 @@ function App() {
   // const content = isLoading ? <div>Loading...</div> : <div>{renderData}</div>;
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        {/* Test to get data in object form and render in browser: */}
-        {/* <div>
-          <pre>{JSON.stringify(items, null, 2)}</pre>
-        </div> */}
-
-        {/* <div>{content}</div> */}
-
-        {/* <button onClick={() => fetchResults()}>POST DATA</button> */}
-        <CreateReport fetchResults={fetchResults} />
-        <Report items={items} isLoading={isLoading} />
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/' component={CreateReport} />
+          <Route exact path='/machines' component={Machines} />
+          <Route exact path='/locations' component={Locations} />
+          <Route exact path='/products' component={Products} />
+          <Route exact path='/media' component={Media} />
+          <Route exact path='/usermanagement' component={UserManagement} />
+          <Route exact path='/logout' component={Logout} />
+        </Switch>
+        {/* <CreateReport /> */}
+        {/* <Report items={items} isLoading={isLoading} /> */}
+      </div>
+    </Router>
   );
 }
 

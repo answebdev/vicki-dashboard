@@ -3,6 +3,15 @@
   background-color: #f4f4f4;
 }
 
+.Link {
+  text-decoration: none;
+  color: #adadad;
+}
+
+.Link:hover {
+  color: #1d1d1d;
+}
+
 .SidebarContent {
   cursor: pointer;
 }
@@ -28,23 +37,32 @@
 
 .InputContainer {
   display: flex;
+  justify-content: space-around;
 }
 
 .FormControlLeft,
 .FormControlRight {
-  width: 400px;
+  width: 100%;
+  border-color: #bfc4cf;
 }
 
 .FormControlLeft {
   margin-right: 40px;
 }
 
-.CreateBtn {
-  /* padding: 5px 30px;
-  background-color: #f5bb5d;
-  color: #ffffff;
-  border: 1px solid #f5bb5d; */
+.Dropdown {
+  padding: 6px 12px;
+  border-color: #bfc4cf;
+  border-radius: 4px;
+}
 
+.Input {
+  padding: 6px 12px;
+  border: 1px solid #bfc4cf;
+  border-radius: 4px;
+}
+
+.CreateBtn {
   margin: 2em 0;
   text-align: center;
   cursor: pointer;
