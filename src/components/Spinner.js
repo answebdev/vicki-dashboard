@@ -1,9 +1,9 @@
 import React from 'react';
-import spinner from '../img/spinner.gif';
+import thespinner from '../img/spinner.gif';
 import classes from '../styles/Spinner.module.css';
 
 const Spinner = () => (
-  <img className={classes.SpinnerGif} src={spinner} alt='Loading...' />
+  <img className={classes.SpinnerGif} src={thespinner} alt='Loading...' />
 );
 
 export default Spinner;
