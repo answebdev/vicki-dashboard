@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Dashboard from './Dashboard';
+import CreateReport from './CreateReport';
+import Report from './Report';
 
 import './App.css';
 
@@ -25,7 +26,25 @@ function App() {
     redirect: 'follow',
   };
 
+  // const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
+  // function fetchResults() {
+  //   setIsLoading(true);
+
+  //   fetch(url, requestOptions)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setIsLoading(false);
+  //       setItems([data]);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //       setIsLoading(false);
+  //     });
+  // }
+
   const fetchResults = async () => {
+    setIsLoading(true);
     // async function fetchResults() {
     const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
     const response = await fetch(url, requestOptions);
@@ -61,11 +80,11 @@ function App() {
     // }
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetchResults();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetchResults();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   // const renderData =
   //   // items.length > 0 &&
@@ -95,9 +114,9 @@ function App() {
 
         {/* <div>{content}</div> */}
 
-        {/* <button onClick={() => postData()}>POST DATA</button> */}
-
-        <Dashboard items={items} isLoading={isLoading} />
+        {/* <button onClick={() => fetchResults()}>POST DATA</button> */}
+        <CreateReport fetchResults={fetchResults} />
+        <Report items={items} isLoading={isLoading} />
       </header>
     </div>
   );

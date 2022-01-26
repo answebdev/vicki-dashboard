@@ -2,6 +2,7 @@
   overflow-x: hidden;
   background-color: #f4f4f4;
 }
+
 .SidebarContent {
   cursor: pointer;
 }
@@ -39,10 +40,22 @@
 }
 
 .CreateBtn {
-  padding: 5px 30px;
+  /* padding: 5px 30px;
+  background-color: #f5bb5d;
+  color: #ffffff;
+  border: 1px solid #f5bb5d; */
+
+  margin: 2em 0;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  border-radius: 4px;
   background-color: #f5bb5d;
   color: #ffffff;
   border: 1px solid #f5bb5d;
+  text-decoration: none;
 }
 
 .CreateBtn:hover {
@@ -51,7 +64,13 @@
   border: 1px solid #f1a01d;
 }
 
+.CreateBtn:active {
+  color: #ffffff;
+  background-color: #de8f0e;
+  border: 1px solid #de8f0e;
+}
+
 .CardDiv,
 .TableDiv {
-  margin: 40px 0;
+  margin: 20px 0;
 }
