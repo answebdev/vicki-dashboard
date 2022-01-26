@@ -35,6 +35,11 @@
   color: #1d1d1d;
 }
 
+.LogoBackground {
+  background-color: #ffffff;
+  border-right: 2px solid #f4f4f4;
+}
+
 .SidebarContent {
   cursor: pointer;
 }

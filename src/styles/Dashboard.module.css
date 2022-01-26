@@ -12,6 +12,10 @@
   color: #1d1d1d;
 }
 
+.LogoBackground {
+  background-color: #ffffff;
+}
+
 .SidebarContent {
   cursor: pointer;
 }
@@ -57,6 +61,18 @@
 }
 
 .Input {
+  padding: 6px 12px;
+  border: 1px solid #bfc4cf;
+  border-radius: 4px;
+}
+
+.DatepickerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Datepicker {
+  /* width: 75%; */
   padding: 6px 12px;
   border: 1px solid #bfc4cf;
   border-radius: 4px;

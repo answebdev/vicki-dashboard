@@ -12,26 +12,62 @@ import {
 } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
-const CreateReport = (props) => {
+const CreateReport = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isShowing, setIsShowing] = useState(true);
 
-  var myHeaders = new Headers();
+  const [from_date, setFrom_date] = useState('');
+  const [to_date, setTo_date] = useState('');
+  const [top_level_grouping, setTop_level_grouping] = useState('client_id');
+  const [sort, setSort] = useState('items_sold,d');
+
+  const raw = { from_date, to_date, top_level_grouping, sort };
+
+  // var myHeaders = new Headers();
+  // myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
+  // myHeaders.append('Content-Type', 'application/json');
+
+  // var raw = JSON.stringify({
+  //   from_date: '2021-12-01',
+  //   to_date: '2021-12-31',
+  //   top_level_grouping: 'client_id',
+  //   sort: 'items_sold,d',
+  // });
+
+  // var requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: raw,
+  //   redirect: 'follow',
+  // };
+
+  const myHeaders = new Headers();
   myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
   myHeaders.append('Content-Type', 'application/json');
 
-  var raw = JSON.stringify({
-    from_date: '2021-12-01',
-    to_date: '2021-12-31',
-    top_level_grouping: 'client_id',
-    sort: 'items_sold,d',
-  });
+  // let raw = JSON.stringify({
+  //   from_date: '2021-12-01',
+  //   to_date: '2021-12-31',
+  //   top_level_grouping: 'client_id',
+  //   sort: 'items_sold,d',
+  // });
 
-  var requestOptions = {
+  // const requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: JSON.stringify({
+  //     from_date: '2021-12-01',
+  //     to_date: '2021-12-31',
+  //     top_level_grouping: 'client_id',
+  //     sort: 'items_sold,d'
+  //   }),
+  //   redirect: 'follow',
+  // };
+  const requestOptions = {
     method: 'POST',
     headers: myHeaders,
-    body: raw,
+    body: JSON.stringify(raw),
     redirect: 'follow',
   };
 
@@ -59,20 +95,27 @@ const CreateReport = (props) => {
       });
   };
 
-  const clearReport = async () => {
+  const clearReport = () => {
     setIsShowing(false);
+    setFrom_date('');
+    setTo_date('');
   };
+
+  // console.log('FROM: ' + from_date);
+  // console.log('TO: ' + to_date);
 
   return (
     <div className={classes.Container}>
       <Row>
         <Col md={3}>
           <ProSidebar>
-            <SidebarHeader className={classes.SidebarHeader}>
-              <Link to='/'>
-                <img className={classes.LogoImage} src={logo} alt='' />
-              </Link>
-            </SidebarHeader>
+            <div className={classes.LogoBackground}>
+              <SidebarHeader className={classes.SidebarHeader}>
+                <Link to='/'>
+                  <img className={classes.LogoImage} src={logo} alt='' />
+                </Link>
+              </SidebarHeader>
+            </div>
             <Link className={classes.Link} to='/machines'>
               <SidebarContent className={classes.SidebarContent}>
                 <i className='fas fa-server'></i> Machines
@@ -148,31 +191,45 @@ const CreateReport = (props) => {
                           <option value='volvo'></option>
                           <option value='volvo'>Transactions</option>
                           <option value='saab'>Financial Summary</option>
-                          <option value='opel'>Opel</option>
-                          <option value='audi'>Audi</option>
                         </select>
                       </Form.Group>
                       <Form.Group
                         className='mb-3'
                         controlId='exampleForm.ControlInput1'
                       >
-                        <Form.Label>Time Range</Form.Label>
+                        <Form.Label>Time Range (From / To)</Form.Label>
+
                         {/* <Form.Control
                           className={classes.FormControlLeft}
                           type='text'
                         /> */}
                         {/* <label for='cars'>Choose a car:</label> */}
-                        <select
+                        {/* <select
                           className={`${classes.FormControlLeft} ${classes.Dropdown}`}
                           name='cars'
-                          id='cars'
+                          value={from_date}
+                          onChange={(e) => setFrom_date(e.target.value)}
                         >
                           <option value='volvo'></option>
-                          <option value='volvo'>Volvo</option>
+                          <option value='2021-12-01'>2021-12-01</option>
                           <option value='saab'>Saab</option>
                           <option value='opel'>Opel</option>
                           <option value='audi'>Audi</option>
-                        </select>
+                        </select> */}
+
+                        <div className={classes.DatepickerContainer}>
+                          <input
+                            className={`${classes.FormControlLeft} ${classes.Datepicker}`}
+                            type='date'
+                            onChange={(e) => setFrom_date(e.target.value)}
+                          ></input>
+
+                          <input
+                            className={`${classes.FormControlLeft} ${classes.Datepicker}`}
+                            type='date'
+                            onChange={(e) => setTo_date(e.target.value)}
+                          ></input>
+                        </div>
                       </Form.Group>
                       <Form.Group
                         className='mb-3'
@@ -214,10 +271,9 @@ const CreateReport = (props) => {
                           id='cars'
                         >
                           <option value='volvo'></option>
-                          <option value='volvo'>Volvo</option>
-                          <option value='saab'>Saab</option>
-                          <option value='opel'>Opel</option>
-                          <option value='audi'>Audi</option>
+                          <option value='volvo'>Criteria 1</option>
+                          <option value='saab'>Criteria 2</option>
+                          <option value='opel'>Criteria 3</option>
                         </select>
                       </Form.Group>
                       <Form.Group
@@ -236,10 +292,9 @@ const CreateReport = (props) => {
                           id='cars'
                         >
                           <option value='volvo'></option>
-                          <option value='volvo'>Volvo</option>
-                          <option value='saab'>Saab</option>
-                          <option value='opel'>Opel</option>
-                          <option value='audi'>Audi</option>
+                          <option value='volvo'>Option 1</option>
+                          <option value='saab'>Option 2</option>
+                          <option value='opel'>Option 3</option>
                         </select>
                       </Form.Group>
                       <Form.Group
@@ -262,7 +317,14 @@ const CreateReport = (props) => {
                 </Card.Body>
               </Card>
             </div>
-            {isShowing ? <Report items={items} isLoading={isLoading} /> : null}
+            {isShowing ? (
+              <Report
+                from_date={from_date}
+                to_date={to_date}
+                items={items}
+                isLoading={isLoading}
+              />
+            ) : null}
             {/* <div className={classes.TableDiv}>
                   <Card>
                     <Card.Body>

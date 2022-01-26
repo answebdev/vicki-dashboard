@@ -18,11 +18,13 @@ const UserManagement = () => {
       <Row>
         <Col md={3}>
           <ProSidebar>
-            <SidebarHeader className={classes.SidebarHeader}>
-              <Link to='/'>
-                <img className={classes.LogoImage} src={logo} alt='' />
-              </Link>
-            </SidebarHeader>
+            <div className={classes.LogoBackground}>
+              <SidebarHeader className={classes.SidebarHeader}>
+                <Link to='/'>
+                  <img className={classes.LogoImage} src={logo} alt='' />
+                </Link>
+              </SidebarHeader>
+            </div>
             <Link className={classes.Link} to='/machines'>
               <SidebarContent className={classes.SidebarContent}>
                 <i className='fas fa-server'></i> Machines
