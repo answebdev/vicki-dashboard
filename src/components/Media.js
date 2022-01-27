@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/img/viatouch_logo.png';
-import media from '../img/media.webp';
+import media from '../img/mediatiny.webp';
 import { Row, Col } from 'react-bootstrap';
 import {
   ProSidebar,

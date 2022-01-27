@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/img/viatouch_logo.png';
-import logout from '../img/logout.webp';
+import logout from '../img/logouttiny.webp';
 import { Row, Col } from 'react-bootstrap';
 import {
   ProSidebar,
