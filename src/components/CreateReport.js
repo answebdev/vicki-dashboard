@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import logo from '../../src/img/viatouch_logo.png';
@@ -19,35 +19,18 @@ const CreateReport = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingFinancial, setIsLoadingFinancial] = useState(false);
   const [isShowing, setIsShowing] = useState(true);
-  const [isShowing2, setIsShowing2] = useState(true);
+  const [currentReport, setCurrentReport] = useState('');
+  const [criteria, setCriteria] = useState('');
+  const [type, setType] = useState('');
+  const [cardholder, setCardholder] = useState('');
+  const [cardDigits, setCardDigits] = useState('');
 
   const [from_date, setFrom_date] = useState('');
   const [to_date, setTo_date] = useState('');
   const [top_level_grouping, setTop_level_grouping] = useState('client_id');
   const [sort, setSort] = useState('items_sold,d');
 
-  // const [financialSummary, setFinancialSummary] = useState('');
-  const [currentReport, setCurrentReport] = useState('');
-
   const raw = { from_date, to_date, top_level_grouping, sort };
-
-  // var myHeaders = new Headers();
-  // myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
-  // myHeaders.append('Content-Type', 'application/json');
-
-  // var raw = JSON.stringify({
-  //   from_date: '2021-12-01',
-  //   to_date: '2021-12-31',
-  //   top_level_grouping: 'client_id',
-  //   sort: 'items_sold,d',
-  // });
-
-  // var requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: 'follow',
-  // };
 
   const Toast = Swal.mixin({
     toast: true,
@@ -74,7 +57,6 @@ const CreateReport = () => {
 
   const fetchResults = async () => {
     setIsLoading(true);
-    // async function fetchResults() {
     const url = 'https://viatouchmedia-test.apigee.net/loyalty/reports/sales';
     const response = await fetch(url, requestOptions);
     const data = await response.json();
@@ -92,6 +74,7 @@ const CreateReport = () => {
           });
           setIsShowing(false);
         }
+
         return response.json();
       })
       .catch((error) => {
@@ -103,14 +86,6 @@ const CreateReport = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  };
-
-  const clearReport = () => {
-    setIsShowing(false);
-    setIsLoadingFinancial(false);
-    setCurrentReport('');
-    setFrom_date('');
-    setTo_date('');
   };
 
   // console.log('FROM: ' + from_date);
@@ -127,6 +102,42 @@ const CreateReport = () => {
       setIsLoadingFinancial(false);
     }
   };
+
+  const changeCriteria = (criteriaType) => {
+    setCriteria(criteriaType);
+    console.log(criteriaType);
+  };
+
+  const changeOption = (optionType) => {
+    setType(optionType);
+    console.log(optionType);
+  };
+
+  const changeCardholder = (cardholder) => {
+    setCardholder(cardholder);
+    console.log(cardholder);
+  };
+
+  const changeCardDigits = (cardDigits) => {
+    setCardDigits(cardDigits);
+    console.log(cardDigits);
+  };
+
+  const clearReport = () => {
+    setIsShowing(false);
+    setIsLoadingFinancial(false);
+    setCurrentReport('');
+    setCriteria('');
+    setType('');
+    setCardholder('');
+    setCardDigits('');
+    setFrom_date('');
+    setTo_date('');
+  };
+
+  // useEffect(() => {
+  //   clearReport();
+  // }, []);
 
   return (
     <div className={classes.Container}>
@@ -251,6 +262,10 @@ const CreateReport = () => {
                         /> */}
                         <input
                           className={`${classes.FormControlLeft} ${classes.Input}`}
+                          onChange={(event) =>
+                            changeCardholder(event.target.value)
+                          }
+                          value={cardholder}
                           type='text'
                           name='cardholder'
                         ></input>
@@ -276,13 +291,17 @@ const CreateReport = () => {
                         /> */}
                         <select
                           className={`${classes.FormControlRight} ${classes.Dropdown}`}
-                          name='cars'
-                          id='cars'
+                          onChange={(event) =>
+                            changeCriteria(event.target.value)
+                          }
+                          value={criteria}
+                          name='criteria'
+                          id='criteria'
                         >
-                          <option value='volvo'></option>
-                          <option value='volvo'>Criteria 1</option>
-                          <option value='saab'>Criteria 2</option>
-                          <option value='opel'>Criteria 3</option>
+                          <option value=''></option>
+                          <option value='Criteria 1'>Criteria 1</option>
+                          <option value='Criteria 2'>Criteria 2</option>
+                          <option value='Criteria 3'>Criteria 3</option>
                         </select>
                       </Form.Group>
                       <Form.Group
@@ -297,13 +316,15 @@ const CreateReport = () => {
                         <select
                           style={{ padding: '6px 12px' }}
                           className={`${classes.FormControlRight} ${classes.Dropdown}`}
-                          name='cars'
-                          id='cars'
+                          onChange={(event) => changeOption(event.target.value)}
+                          value={type}
+                          name='options'
+                          id='options'
                         >
-                          <option value='volvo'></option>
-                          <option value='volvo'>Option 1</option>
-                          <option value='saab'>Option 2</option>
-                          <option value='opel'>Option 3</option>
+                          <option value=''></option>
+                          <option value='Option 1'>Option 1</option>
+                          <option value='Option 2'>Option 2</option>
+                          <option value='Option 3'>Option 3</option>
                         </select>
                       </Form.Group>
                       <Form.Group
@@ -317,6 +338,10 @@ const CreateReport = () => {
                         /> */}
                         <input
                           className={`${classes.FormControlRight} ${classes.Input}`}
+                          onChange={(event) =>
+                            changeCardDigits(event.target.value)
+                          }
+                          value={cardDigits}
                           type='text'
                           name='lastfourdigits'
                         ></input>
