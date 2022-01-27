@@ -130,7 +130,7 @@ const CreateReport = () => {
   //   clearReport();
   // }, []);
 
-  let futureDates = new Date().toISOString().slice(0, 10);
+  // let futureDates = new Date().toISOString().slice(0, 10);
 
   return (
     <div className={classes.Container}>
@@ -241,7 +241,7 @@ const CreateReport = () => {
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
                             type='date'
                             onChange={(e) => setTo_date(e.target.value)}
-                            max={futureDates}
+                            // max={futureDates}
                           ></input>
                         </div>
                       </Form.Group>
