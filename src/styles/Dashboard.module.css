@@ -12,10 +12,6 @@
   color: #1d1d1d;
 }
 
-.LogoBackground {
-  background-color: #ffffff;
-}
-
 .SidebarContent {
   cursor: pointer;
 }
@@ -32,11 +28,6 @@
 
 .SidebarHeader {
   padding: 20px;
-}
-
-.LogoImage {
-  width: 70%;
-  height: auto;
 }
 
 .InputContainer {

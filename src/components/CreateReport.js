@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../src/img/viatouch_logo.png';
+import Sidebar from './Sidebar';
 import Report from './Report';
 import FinancialSummary from './FinancialSummary';
 import Swal from 'sweetalert2';
 import { Row, Col, Card, Form } from 'react-bootstrap';
 import classes from '../styles/Dashboard.module.css';
-import {
-  ProSidebar,
-  SidebarHeader,
-  SidebarFooter,
-  SidebarContent,
-} from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
 
 const CreateReport = () => {
   const [items, setItems] = useState([]);
@@ -27,8 +19,8 @@ const CreateReport = () => {
 
   const [from_date, setFrom_date] = useState('');
   const [to_date, setTo_date] = useState('');
-  const [top_level_grouping, setTop_level_grouping] = useState('client_id');
-  const [sort, setSort] = useState('items_sold,d');
+  const [top_level_grouping] = useState('client_id');
+  const [sort] = useState('items_sold,d');
 
   const raw = { from_date, to_date, top_level_grouping, sort };
 
@@ -114,76 +106,21 @@ const CreateReport = () => {
     setCardDigits(cardDigits);
   };
 
-  const clearReport = () => {
-    setIsShowing(false);
-    setIsLoadingFinancial(false);
-    setCurrentReport('');
-    setCriteria('');
-    setType('');
-    setCardholder('');
-    setCardDigits('');
-    setFrom_date('');
-    setTo_date('');
-  };
-
   return (
     <div className={classes.Container}>
       <Row>
         <Col md={3}>
-          <ProSidebar>
-            <div className={classes.LogoBackground}>
-              <SidebarHeader className={classes.SidebarHeader}>
-                <Link to='/'>
-                  <img className={classes.LogoImage} src={logo} alt='' />
-                </Link>
-              </SidebarHeader>
-            </div>
-            <Link className={classes.Link} to='/machines'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fas fa-server'></i> Machines
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/locations'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fas fa-map-marker-alt'></i> Locations
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/products'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fas fa-cube'></i> Products
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/'>
-              <SidebarContent
-                onClick={() => clearReport()}
-                className={classes.SidebarContent}
-              >
-                <i className='fas fa-file-alt'></i> Reports
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/media'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fab fa-youtube'></i> Media
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/usermanagement'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fas fa-cog'></i> User Management
-              </SidebarContent>
-            </Link>
-            <Link className={classes.Link} to='/logout'>
-              <SidebarContent className={classes.SidebarContent}>
-                <i className='fas fa-sign-out-alt'></i> Logout
-              </SidebarContent>
-            </Link>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarContent>&nbsp;</SidebarContent>
-            <SidebarFooter className={classes.SidebarFooter}>
-              Version 1.6.32
-            </SidebarFooter>
-            <SidebarContent>&nbsp;</SidebarContent>
-          </ProSidebar>
+          <Sidebar
+            setIsShowing={setIsShowing}
+            setIsLoadingFinancial={setIsLoadingFinancial}
+            setCurrentReport={setCurrentReport}
+            setCriteria={setCriteria}
+            setType={setType}
+            setCardholder={setCardholder}
+            setCardDigits={setCardDigits}
+            setFrom_date={setFrom_date}
+            setTo_date={setTo_date}
+          />
         </Col>
 
         <Col md={9}>
