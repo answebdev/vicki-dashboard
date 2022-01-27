@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/img/viatouch_logo.png';
-import machines from '../img/machines.webp';
+import machines from '../img/machinestiny.webp';
 import { Row, Col } from 'react-bootstrap';
 import {
   ProSidebar,
