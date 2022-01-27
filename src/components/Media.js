@@ -20,7 +20,7 @@ const Media = () => {
           <div>
             <div className={classes.View}>
               <header className={classes.ViewHeader}>
-                <img src={media} className={classes.ViewImage} alt='logo' />
+                <img src={media} className={classes.ViewImage} alt='Media' />
                 <p className={classes.ViewText}>Media</p>
               </header>
             </div>

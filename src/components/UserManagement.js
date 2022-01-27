@@ -23,7 +23,7 @@ const UserManagement = () => {
                 <img
                   src={usermanagement}
                   className={classes.ViewImage}
-                  alt='logo'
+                  alt='User Management'
                 />
                 <p className={classes.ViewText}>User Management</p>
               </header>

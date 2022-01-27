@@ -20,7 +20,11 @@ const Products = () => {
           <div>
             <div className={classes.View}>
               <header className={classes.ViewHeader}>
-                <img src={products} className={classes.ViewImage} alt='logo' />
+                <img
+                  src={products}
+                  className={classes.ViewImage}
+                  alt='Products'
+                />
                 <p className={classes.ViewText}>Products</p>
               </header>
             </div>

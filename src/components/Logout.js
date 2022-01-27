@@ -20,7 +20,7 @@ const Logout = () => {
           <div>
             <div className={classes.View}>
               <header className={classes.ViewHeader}>
-                <img src={logout} className={classes.ViewImage} alt='logo' />
+                <img src={logout} className={classes.ViewImage} alt='Logout' />
                 <p className={classes.ViewText}>Logout</p>
               </header>
             </div>
