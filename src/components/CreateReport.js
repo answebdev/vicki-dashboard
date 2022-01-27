@@ -93,7 +93,7 @@ const CreateReport = () => {
 
   const changeReport = (reportType) => {
     setCurrentReport(reportType);
-    console.log(reportType);
+    // console.log(reportType);
 
     if (reportType === 'Financial Summary') {
       setIsLoadingFinancial(true);
@@ -105,22 +105,22 @@ const CreateReport = () => {
 
   const changeCriteria = (criteriaType) => {
     setCriteria(criteriaType);
-    console.log(criteriaType);
+    // console.log(criteriaType);
   };
 
   const changeOption = (optionType) => {
     setType(optionType);
-    console.log(optionType);
+    // console.log(optionType);
   };
 
   const changeCardholder = (cardholder) => {
     setCardholder(cardholder);
-    console.log(cardholder);
+    // console.log(cardholder);
   };
 
   const changeCardDigits = (cardDigits) => {
     setCardDigits(cardDigits);
-    console.log(cardDigits);
+    // console.log(cardDigits);
   };
 
   const clearReport = () => {
