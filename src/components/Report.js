@@ -33,7 +33,6 @@ const Report = (props) => {
                       <Card.Title>Report: Transactions</Card.Title>
                       <Card.Subtitle className='mb-2 text-muted'>
                         Date: {formattedFromDate} to {formattedToDate}
-                        {/* Date: {props.from_date} to {props.to_date} */}
                       </Card.Subtitle>
                       <br />
                       <Table striped bordered hover>

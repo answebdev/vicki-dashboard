@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import logo from '../../src/img/viatouch_logo.png';
 import Report from './Report';
 import FinancialSummary from './FinancialSummary';
+import Swal from 'sweetalert2';
 import { Row, Col, Card, Form } from 'react-bootstrap';
 import classes from '../styles/Dashboard.module.css';
 import {
@@ -126,8 +126,6 @@ const CreateReport = () => {
     setTo_date('');
   };
 
-  // let futureDates = new Date().toISOString().slice(0, 10);
-
   return (
     <div className={classes.Container}>
       <Row>
@@ -202,11 +200,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Report Type</Form.Label>
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                          placeholder='Transactions'
-                        /> */}
                         <select
                           onChange={(event) => changeReport(event.target.value)}
                           value={currentReport}
@@ -233,13 +226,11 @@ const CreateReport = () => {
                             onChange={(e) => setFrom_date(e.target.value)}
                             value={from_date}
                           ></input>
-
                           <input
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
                             type='date'
                             onChange={(e) => setTo_date(e.target.value)}
                             value={to_date}
-                            // max={futureDates}
                           ></input>
                         </div>
                       </Form.Group>
@@ -248,10 +239,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Name Of Cardholder</Form.Label>
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                        /> */}
                         <input
                           className={`${classes.FormControlLeft} ${classes.Input}`}
                           onChange={(event) =>
@@ -265,7 +252,6 @@ const CreateReport = () => {
                       <button
                         onClick={() => fetchResults()}
                         className={classes.CreateBtn}
-                        variant='warning'
                       >
                         CREATE REPORT
                       </button>
@@ -277,10 +263,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Criteria</Form.Label>
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                        /> */}
                         <select
                           className={`${classes.FormControlRight} ${classes.Dropdown}`}
                           onChange={(event) =>
@@ -301,10 +283,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Selected Type</Form.Label>
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                        /> */}
                         <select
                           style={{ padding: '6px 12px' }}
                           className={`${classes.FormControlRight} ${classes.Dropdown}`}
@@ -324,10 +302,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Last Four Digits Of Card</Form.Label>
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                        /> */}
                         <input
                           className={`${classes.FormControlRight} ${classes.Input}`}
                           onChange={(event) =>

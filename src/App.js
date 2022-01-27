@@ -8,8 +8,6 @@ import Media from './components/Media';
 import UserManagement from './components/UserManagement';
 import Logout from './components/Logout';
 
-import './App.css';
-
 function App() {
   return (
     <Router>

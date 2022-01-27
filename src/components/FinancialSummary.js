@@ -28,7 +28,6 @@ const FinancialSummary = (props) => {
                   <Card.Title>Report: Financial Summary</Card.Title>
                   <Card.Subtitle className='mb-2 text-muted'>
                     Date: {formattedFromDate} to {formattedToDate}
-                    {/* Date: {props.from_date} to {props.to_date} */}
                   </Card.Subtitle>
                   <br />
                 </Card.Body>
