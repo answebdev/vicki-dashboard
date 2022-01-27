@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Sidebar from './Sidebar';
 import machines from '../img/machinestiny.webp';
 import { Row, Col } from 'react-bootstrap';
@@ -7,6 +8,9 @@ import classes from '../styles/DummyViews.module.css';
 const Machines = () => {
   return (
     <div className={classes.Container}>
+      <Helmet>
+        <title>VICKI Dashboard | Machines</title>
+      </Helmet>
       <Row>
         <Col md={3}>
           <Sidebar />

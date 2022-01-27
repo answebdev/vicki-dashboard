@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Sidebar from './Sidebar';
 import Report from './Report';
 import FinancialSummary from './FinancialSummary';
@@ -108,6 +109,9 @@ const CreateReport = () => {
 
   return (
     <div className={classes.Container}>
+      <Helmet>
+        <title>VICKI Dashboard | Reports</title>
+      </Helmet>
       <Row>
         <Col md={3}>
           <Sidebar
@@ -140,7 +144,7 @@ const CreateReport = () => {
                         <select
                           onChange={(event) => changeReport(event.target.value)}
                           value={currentReport}
-                          className={`${classes.FormControlLeft} ${classes.Dropdown}`}
+                          className={`${classes.FormControlLeft} ${classes.Input}`}
                           name='reports'
                           id='reports'
                         >
@@ -201,7 +205,7 @@ const CreateReport = () => {
                       >
                         <Form.Label>Criteria</Form.Label>
                         <select
-                          className={`${classes.FormControlRight} ${classes.Dropdown}`}
+                          className={`${classes.FormControlRight} ${classes.Input}`}
                           onChange={(event) =>
                             changeCriteria(event.target.value)
                           }
@@ -222,7 +226,7 @@ const CreateReport = () => {
                         <Form.Label>Selected Type</Form.Label>
                         <select
                           style={{ padding: '6px 12px' }}
-                          className={`${classes.FormControlRight} ${classes.Dropdown}`}
+                          className={`${classes.FormControlRight} ${classes.Input}`}
                           onChange={(event) => changeOption(event.target.value)}
                           value={type}
                           name='options'

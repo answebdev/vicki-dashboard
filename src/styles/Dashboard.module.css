@@ -33,6 +33,8 @@
 .InputContainer {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .FormControlLeft,
@@ -101,4 +103,99 @@
 
 .FinancialSummary {
   height: 400px;
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media screen and (min-width: 981px) and (max-width: 1200px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 980px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 768px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 551px) and (max-width: 640px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 471px) and (max-width: 550px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
+
+  .DatepickerContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Datepicker {
+    margin: 5px 0;
+  }
+}
+
+@media screen and (min-width: 431px) and (max-width: 470px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 430px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 400px) {
+  .InputContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .FormControlLeft,
+  .FormControlRight {
+    width: 100%;
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Sidebar from './Sidebar';
 import usermanagement from '../img/usermanagementtiny.webp';
 import { Row, Col } from 'react-bootstrap';
@@ -7,6 +8,9 @@ import classes from '../styles/DummyViews.module.css';
 const UserManagement = () => {
   return (
     <div className={classes.Container}>
+      <Helmet>
+        <title>VICKI Dashboard | User Management</title>
+      </Helmet>
       <Row>
         <Col md={3}>
           <Sidebar />
