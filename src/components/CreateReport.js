@@ -336,6 +336,7 @@ const CreateReport = () => {
                           value={cardDigits}
                           type='text'
                           name='lastfourdigits'
+                          maxlength='4'
                         ></input>
                       </Form.Group>
                     </div>
