@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import logo from '../../src/img/viatouch_logo.png';
 import Report from './Report';
+import FinancialSummary from './FinancialSummary';
 import { Row, Col, Card, Form } from 'react-bootstrap';
 import classes from '../styles/Dashboard.module.css';
 import {
@@ -15,12 +17,17 @@ import 'react-pro-sidebar/dist/css/styles.css';
 const CreateReport = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingFinancial, setIsLoadingFinancial] = useState(false);
   const [isShowing, setIsShowing] = useState(true);
+  const [isShowing2, setIsShowing2] = useState(true);
 
   const [from_date, setFrom_date] = useState('');
   const [to_date, setTo_date] = useState('');
   const [top_level_grouping, setTop_level_grouping] = useState('client_id');
   const [sort, setSort] = useState('items_sold,d');
+
+  // const [financialSummary, setFinancialSummary] = useState('');
+  const [currentReport, setCurrentReport] = useState('');
 
   const raw = { from_date, to_date, top_level_grouping, sort };
 
@@ -42,28 +49,22 @@ const CreateReport = () => {
   //   redirect: 'follow',
   // };
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
+
   const myHeaders = new Headers();
   myHeaders.append('Authorization', 'Bearer YCXW1zkNJvg4T6aKK9W6sQx2bNrQ');
   myHeaders.append('Content-Type', 'application/json');
 
-  // let raw = JSON.stringify({
-  //   from_date: '2021-12-01',
-  //   to_date: '2021-12-31',
-  //   top_level_grouping: 'client_id',
-  //   sort: 'items_sold,d',
-  // });
-
-  // const requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   body: JSON.stringify({
-  //     from_date: '2021-12-01',
-  //     to_date: '2021-12-31',
-  //     top_level_grouping: 'client_id',
-  //     sort: 'items_sold,d'
-  //   }),
-  //   redirect: 'follow',
-  // };
   const requestOptions = {
     method: 'POST',
     headers: myHeaders,
@@ -83,11 +84,20 @@ const CreateReport = () => {
         setIsLoading(true);
         setIsShowing(true);
         setItems([data]);
+
+        if (!currentReport) {
+          Toast.fire({
+            icon: 'warning',
+            title: 'Please select a report type',
+          });
+          setIsShowing(false);
+        }
         return response.json();
       })
       .catch((error) => {
         setIsLoading(false);
         setIsShowing(false);
+
         console.log(error);
       })
       .finally(() => {
@@ -97,12 +107,26 @@ const CreateReport = () => {
 
   const clearReport = () => {
     setIsShowing(false);
+    setIsLoadingFinancial(false);
+    setCurrentReport('');
     setFrom_date('');
     setTo_date('');
   };
 
   // console.log('FROM: ' + from_date);
   // console.log('TO: ' + to_date);
+
+  const changeReport = (reportType) => {
+    setCurrentReport(reportType);
+    console.log(reportType);
+
+    if (reportType === 'Financial Summary') {
+      setIsLoadingFinancial(true);
+      setIsShowing(false);
+    } else {
+      setIsLoadingFinancial(false);
+    }
+  };
 
   return (
     <div className={classes.Container}>
@@ -184,13 +208,17 @@ const CreateReport = () => {
                           placeholder='Transactions'
                         /> */}
                         <select
+                          onChange={(event) => changeReport(event.target.value)}
+                          value={currentReport}
                           className={`${classes.FormControlLeft} ${classes.Dropdown}`}
-                          name='cars'
-                          id='cars'
+                          name='reports'
+                          id='reports'
                         >
-                          <option value='volvo'></option>
-                          <option value='volvo'>Transactions</option>
-                          <option value='saab'>Financial Summary</option>
+                          <option value=''></option>
+                          <option value='Transactions'>Transactions</option>
+                          <option value='Financial Summary'>
+                            Financial Summary
+                          </option>
                         </select>
                       </Form.Group>
                       <Form.Group
@@ -198,25 +226,6 @@ const CreateReport = () => {
                         controlId='exampleForm.ControlInput1'
                       >
                         <Form.Label>Time Range (From / To)</Form.Label>
-
-                        {/* <Form.Control
-                          className={classes.FormControlLeft}
-                          type='text'
-                        /> */}
-                        {/* <label for='cars'>Choose a car:</label> */}
-                        {/* <select
-                          className={`${classes.FormControlLeft} ${classes.Dropdown}`}
-                          name='cars'
-                          value={from_date}
-                          onChange={(e) => setFrom_date(e.target.value)}
-                        >
-                          <option value='volvo'></option>
-                          <option value='2021-12-01'>2021-12-01</option>
-                          <option value='saab'>Saab</option>
-                          <option value='opel'>Opel</option>
-                          <option value='audi'>Audi</option>
-                        </select> */}
-
                         <div className={classes.DatepickerContainer}>
                           <input
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
@@ -317,7 +326,7 @@ const CreateReport = () => {
                 </Card.Body>
               </Card>
             </div>
-            {isShowing ? (
+            {isShowing && !isLoadingFinancial ? (
               <Report
                 from_date={from_date}
                 to_date={to_date}
@@ -325,46 +334,10 @@ const CreateReport = () => {
                 isLoading={isLoading}
               />
             ) : null}
-            {/* <div className={classes.TableDiv}>
-                  <Card>
-                    <Card.Body>
-                      <Card.Title>Report: Transactions</Card.Title>
-                      <Card.Subtitle className='mb-2 text-muted'>
-                        Date: 1/20/2020
-                      </Card.Subtitle>
-                      <Table striped bordered hover>
-                        <thead>
-                          <tr>
-                            <th>Transactions</th>
-                            <th>Items Sold</th>
-                            <th>Gross Revenue</th>
-                            <th>Taxes</th>
-                            <th>Revenue</th>
-                            <th>Cost</th>
-                            <th>Gross Margin</th>
-                            <th>Gross Margin %</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{item.report[0].transaction_count}</td>
-                            <td>{item.report[0].items_sold}</td>
-                            <td>{item.report[0].gross_revenues}</td>
-                            <td>{item.report[0].taxes}</td>
-                            <td>{item.report[0].revenues}</td>
-                            <td>
-                              {(
-                                Math.round(item.report[0].cost * 100) / 100
-                              ).toFixed(2)}
-                            </td>
-                            <td>{item.report[0].gross_margin}</td>
-                            <td>{item.report[0].gross_margin_percent}</td>
-                          </tr>
-                        </tbody>
-                      </Table>
-                    </Card.Body>
-                  </Card>
-                </div> */}
+
+            {isLoadingFinancial ? (
+              <FinancialSummary from_date={from_date} to_date={to_date} />
+            ) : null}
           </div>
         </Col>
       </Row>

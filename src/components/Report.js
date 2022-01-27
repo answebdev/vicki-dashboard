@@ -17,46 +17,14 @@ const Report = (props) => {
   return (
     <div className={classes.Container}>
       {!props.isLoading ? <div className='text-center'></div> : <Spinner />}
+      {/* {!props.isLoadingFinancial ? (
+        <p>Financial Summary</p>
+      ) : (
+        <p>Transactions</p>
+      )} */}
       {props.items.map((item, index) => {
         return (
           <Row key={index}>
-            {/* <Col md={3}>
-              <ProSidebar>
-                <SidebarHeader className={classes.SidebarHeader}>
-                  <img className={classes.LogoImage} src={logo} alt='' />
-                </SidebarHeader>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-server'></i> Machines
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-map-marker-alt'></i> Locations
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-cube'></i> Products
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-file-alt'></i> Reports
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fab fa-youtube'></i> Media
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-cog'></i> User Management
-                </SidebarContent>
-                <SidebarContent className={classes.SidebarContent}>
-                  <i className='fas fa-sign-out-alt'></i> Logout
-                </SidebarContent>
-                <SidebarContent>&nbsp;</SidebarContent>
-                <SidebarContent>&nbsp;</SidebarContent>
-                <SidebarContent>&nbsp;</SidebarContent>
-                <SidebarContent>&nbsp;</SidebarContent>
-                <SidebarFooter className={classes.SidebarFooter}>
-                  Version 1.6.32
-                </SidebarFooter>
-                <SidebarContent>&nbsp;</SidebarContent>
-              </ProSidebar>
-            </Col> */}
-
             <Col md={12}>
               <div>
                 <div className={classes.TableDiv}>
