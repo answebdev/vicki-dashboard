@@ -80,7 +80,6 @@ const CreateReport = () => {
       .catch((error) => {
         setIsLoading(false);
         setIsShowing(false);
-
         console.log(error);
       })
       .finally(() => {
@@ -88,12 +87,8 @@ const CreateReport = () => {
       });
   };
 
-  // console.log('FROM: ' + from_date);
-  // console.log('TO: ' + to_date);
-
   const changeReport = (reportType) => {
     setCurrentReport(reportType);
-    // console.log(reportType);
 
     if (reportType === 'Financial Summary') {
       setIsLoadingFinancial(true);
@@ -105,22 +100,18 @@ const CreateReport = () => {
 
   const changeCriteria = (criteriaType) => {
     setCriteria(criteriaType);
-    // console.log(criteriaType);
   };
 
   const changeOption = (optionType) => {
     setType(optionType);
-    // console.log(optionType);
   };
 
   const changeCardholder = (cardholder) => {
     setCardholder(cardholder);
-    // console.log(cardholder);
   };
 
   const changeCardDigits = (cardDigits) => {
     setCardDigits(cardDigits);
-    // console.log(cardDigits);
   };
 
   const clearReport = () => {
@@ -138,6 +129,8 @@ const CreateReport = () => {
   // useEffect(() => {
   //   clearReport();
   // }, []);
+
+  let futureDates = new Date().toISOString().slice(0, 10);
 
   return (
     <div className={classes.Container}>
@@ -248,6 +241,7 @@ const CreateReport = () => {
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
                             type='date'
                             onChange={(e) => setTo_date(e.target.value)}
+                            max={futureDates}
                           ></input>
                         </div>
                       </Form.Group>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/img/viatouch_logo.png';
-import dashboard from '../img/dashboard.webp';
+import media from '../img/media.webp';
 import { Row, Col } from 'react-bootstrap';
 import {
   ProSidebar,
@@ -74,7 +74,7 @@ const Media = () => {
           <div>
             <div className={classes.View}>
               <header className={classes.ViewHeader}>
-                <img src={dashboard} className={classes.ViewImage} alt='logo' />
+                <img src={media} className={classes.ViewImage} alt='logo' />
                 <p className={classes.ViewText}>Media</p>
               </header>
             </div>

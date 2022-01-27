@@ -3,20 +3,6 @@ import { Row, Col, Card } from 'react-bootstrap';
 import classes from '../styles/Dashboard.module.css';
 
 const FinancialSummary = (props) => {
-  //   var date = new Date('2010-10-11T00:00:00+05:30');
-  //   console.log(
-  //     (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) +
-  //       '/' +
-  //       (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
-  //       '/' +
-  //       date.getFullYear()
-  //   );
-  //   console.log('DATE: ' + date);
-
-  //   var date = new Date('Mon Aug 14 2017 00:00:00 GMT-0500 (CDT)');
-  //   var newdate =
-  //     date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-
   // Format Dates
   let rawFromDate = props.from_date,
     formattedFromDate = new Date(rawFromDate.split('-')).toLocaleDateString();

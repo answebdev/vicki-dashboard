@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/img/viatouch_logo.png';
-import dashboard from '../img/dashboard.webp';
+import usermanagement from '../img/usermanagement.webp';
 import { Row, Col } from 'react-bootstrap';
 import {
   ProSidebar,
@@ -74,7 +74,11 @@ const UserManagement = () => {
           <div>
             <div className={classes.View}>
               <header className={classes.ViewHeader}>
-                <img src={dashboard} className={classes.ViewImage} alt='logo' />
+                <img
+                  src={usermanagement}
+                  className={classes.ViewImage}
+                  alt='logo'
+                />
                 <p className={classes.ViewText}>User Management</p>
               </header>
             </div>
