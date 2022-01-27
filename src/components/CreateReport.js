@@ -126,10 +126,6 @@ const CreateReport = () => {
     setTo_date('');
   };
 
-  // useEffect(() => {
-  //   clearReport();
-  // }, []);
-
   // let futureDates = new Date().toISOString().slice(0, 10);
 
   return (
@@ -235,12 +231,14 @@ const CreateReport = () => {
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
                             type='date'
                             onChange={(e) => setFrom_date(e.target.value)}
+                            value={from_date}
                           ></input>
 
                           <input
                             className={`${classes.FormControlLeft} ${classes.Datepicker}`}
                             type='date'
                             onChange={(e) => setTo_date(e.target.value)}
+                            value={to_date}
                             // max={futureDates}
                           ></input>
                         </div>
