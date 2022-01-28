@@ -3,33 +3,6 @@
   background-color: #f4f4f4;
 }
 
-/* .Link {
-  text-decoration: none;
-  color: #adadad;
-}
-
-.Link:hover {
-  color: #1d1d1d;
-} */
-
-/* .SidebarContent {
-  cursor: pointer;
-}
-
-.SidebarContent,
-.SidebarFooter {
-  padding: 15px;
-}
-
-.SidebarContent:hover {
-  background-color: #f4f4f4;
-  color: #1d1d1d;
-}
-
-.SidebarHeader {
-  padding: 20px;
-} */
-
 .InputContainer {
   display: flex;
   justify-content: space-between;
@@ -42,10 +15,6 @@
   width: 100%;
   border-color: #bfc4cf;
 }
-
-/* .FormControlLeft {
-  margin-right: 40px;
-} */
 
 .Dropdown {
   padding: 6px 12px;
@@ -121,25 +90,25 @@
     flex-direction: column-reverse;
     flex-wrap: wrap;
   }
-
-  /* .DatepickerContainer {
-    display: flex;
-    justify-content: flex-start;
-  } */
 }
 
 @media screen and (min-width: 769px) and (max-width: 980px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse; */
+  }
+
+  .Table {
+    font-size: 12px;
   }
 }
 
 @media screen and (min-width: 641px) and (max-width: 768px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse;
-    align-items: center; */
+  }
+
+  .Table {
+    font-size: 12px;
   }
 }
 
@@ -147,13 +116,15 @@
   .InputContainer {
     display: inherit;
   }
+
+  .Table {
+    font-size: 10px;
+  }
 }
 
 @media screen and (min-width: 471px) and (max-width: 550px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse;
-    align-items: center; */
   }
 
   .DatepickerContainer {
@@ -163,14 +134,16 @@
 
   .Datepicker {
     margin: 5px 0;
+  }
+
+  .Table {
+    font-size: 8px;
   }
 }
 
 @media screen and (min-width: 431px) and (max-width: 470px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse;
-    align-items: center; */
   }
 
   .DatepickerContainer {
@@ -180,14 +153,16 @@
 
   .Datepicker {
     margin: 5px 0;
+  }
+
+  .Table {
+    font-size: 7px;
   }
 }
 
 @media screen and (min-width: 401px) and (max-width: 430px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse;
-    align-items: center; */
   }
 
   .DatepickerContainer {
@@ -197,14 +172,16 @@
 
   .Datepicker {
     margin: 5px 0;
+  }
+
+  .Table {
+    font-size: 6px;
   }
 }
 
 @media screen and (min-width: 100px) and (max-width: 400px) {
   .InputContainer {
     display: inherit;
-    /* flex-direction: column-reverse;
-    align-items: center; */
   }
 
   .DatepickerContainer {
@@ -214,5 +191,9 @@
 
   .Datepicker {
     margin: 5px 0;
+  }
+
+  .Table {
+    font-size: 5px;
   }
 }

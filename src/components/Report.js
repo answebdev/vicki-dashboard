@@ -35,7 +35,7 @@ const Report = (props) => {
                         Date: {formattedFromDate} to {formattedToDate}
                       </Card.Subtitle>
                       <br />
-                      <Table striped bordered hover>
+                      <Table className={classes.Table} striped bordered hover>
                         <thead>
                           <tr>
                             <th>Transactions</th>
