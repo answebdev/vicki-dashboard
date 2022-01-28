@@ -1,3 +1,7 @@
+.Container {
+  overflow-x: hidden;
+}
+
 .View {
   text-align: center;
 }
@@ -20,10 +24,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.Container {
-  overflow-x: hidden;
 }
 
 .Link {
