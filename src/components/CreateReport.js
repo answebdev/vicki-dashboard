@@ -128,7 +128,7 @@ const CreateReport = () => {
         </Col>
 
         <Col md={9}>
-          <div style={{ padding: '2em' }}>
+          <div className={classes.OuterDiv}>
             <div className={classes.CardDiv}>
               <Card>
                 <Card.Body>
@@ -225,7 +225,6 @@ const CreateReport = () => {
                       >
                         <Form.Label>Selected Type</Form.Label>
                         <select
-                          style={{ padding: '6px 12px' }}
                           className={`${classes.FormControlRight} ${classes.Input}`}
                           onChange={(event) => changeOption(event.target.value)}
                           value={type}
