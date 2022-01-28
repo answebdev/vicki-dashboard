@@ -161,18 +161,24 @@ const CreateReport = () => {
                       >
                         <Form.Label>Time Range (From / To)</Form.Label>
                         <div className={classes.DatepickerContainer}>
-                          <input
-                            className={`${classes.FormControlLeft} ${classes.Datepicker}`}
-                            type='date'
-                            onChange={(e) => setFrom_date(e.target.value)}
-                            value={from_date}
-                          ></input>
-                          <input
-                            className={`${classes.FormControlLeft} ${classes.Datepicker}`}
-                            type='date'
-                            onChange={(e) => setTo_date(e.target.value)}
-                            value={to_date}
-                          ></input>
+                          <div className={classes.FromDatepicker}>
+                            <input
+                              className={`${classes.FormControlLeft} ${classes.Datepicker}`}
+                              type='date'
+                              onChange={(e) => setFrom_date(e.target.value)}
+                              value={from_date}
+                              title='From'
+                            ></input>
+                          </div>
+                          <div className={classes.ToDatepicker}>
+                            <input
+                              className={`${classes.FormControlLeft} ${classes.Datepicker}`}
+                              type='date'
+                              onChange={(e) => setTo_date(e.target.value)}
+                              value={to_date}
+                              title='To'
+                            ></input>
+                          </div>
                         </div>
                       </Form.Group>
                       <Form.Group
@@ -190,12 +196,6 @@ const CreateReport = () => {
                           name='cardholder'
                         ></input>
                       </Form.Group>
-                      <button
-                        onClick={() => fetchResults()}
-                        className={classes.CreateBtn}
-                      >
-                        CREATE REPORT
-                      </button>
                     </div>
 
                     <div>
@@ -256,6 +256,13 @@ const CreateReport = () => {
                       </Form.Group>
                     </div>
                   </div>
+
+                  <button
+                    onClick={() => fetchResults()}
+                    className={classes.CreateBtn}
+                  >
+                    CREATE REPORT
+                  </button>
                 </Card.Body>
               </Card>
             </div>
